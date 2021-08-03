@@ -2,13 +2,13 @@ import { Dollar } from '../src/dollar';
 import { Euro } from '../src/euro';
 
 describe('Money', () => {
-  it('should multiply dollars properly', () => {
+  it('should properly multiply dollars', () => {
     const fiveDollars = new Dollar(5);
 
     expect(fiveDollars.multiplyBy(2).equals(new Dollar(10))).toBeTruthy();
     expect(fiveDollars.multiplyBy(3).equals(new Dollar(15))).toBeTruthy();
   });
-  it('should multiply euros properly', () => {
+  it('should properly multiply euros', () => {
     const fiveEuros = new Euro(5);
 
     expect(fiveEuros.multiplyBy(2).equals(new Euro(10))).toBeTruthy();

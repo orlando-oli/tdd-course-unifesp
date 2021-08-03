@@ -8,10 +8,10 @@ describe('Money', () => {
     expect(fiveDollars.multiplyBy(3).equals(Money.dollar(15))).toBeTruthy();
   });
   it('should properly multiply euros', () => {
-    const fiveEuros = Money.dollar(5);
+    const fiveEuros = Money.euro(5);
 
-    expect(fiveEuros.multiplyBy(2).equals(Money.dollar(10))).toBeTruthy();
-    expect(fiveEuros.multiplyBy(3).equals(Money.dollar(15))).toBeTruthy();
+    expect(fiveEuros.multiplyBy(2).equals(Money.euro(10))).toBeTruthy();
+    expect(fiveEuros.multiplyBy(3).equals(Money.euro(15))).toBeTruthy();
   });
 
   it('Money.equals(): should return true if and only if Money compared share the same value property', () => {

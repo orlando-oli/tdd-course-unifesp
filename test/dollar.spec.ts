@@ -5,10 +5,10 @@ describe('Dollar', () => {
     const fiveDollars = new Dollar(5);
 
     let result = fiveDollars.multiplyBy(2);
-    expect(result.value).toEqual(10);
+    expect(result.equals(new Dollar(10))).toBeTruthy();
 
     result = fiveDollars.multiplyBy(3);
-    expect(result.value).toEqual(15);
+    expect(result.equals(new Dollar(15))).toBeTruthy();
   });
 
   it('Dollar.equals(): should return true if and only if dollars compared share the same value property', () => {

@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable max-classes-per-file */
-abstract class Money {
+class Money {
   constructor(protected readonly value: number, public readonly code: string) {}
 
   static dollar(value: number): Dollar {
@@ -11,21 +11,15 @@ abstract class Money {
     return new Euro(value, 'EUR');
   }
 
-  abstract multiplyBy(factor: number): Money;
+  multiplyBy(factor: number): Money {
+    return new Money(this.value * factor, this.code);
+  }
 
   equals(anotherCurrency: Money): boolean {
     return this.code === anotherCurrency.code && anotherCurrency.value === this.value;
   }
 }
 
-class Euro extends Money {
-  multiplyBy(factor: number): Money {
-    return new Euro(this.value * factor, this.code);
-  }
-}
-class Dollar extends Money {
-  multiplyBy(factor: number): Money {
-    return new Dollar(this.value * factor, this.code);
-  }
-}
+class Euro extends Money {}
+class Dollar extends Money {}
 export { Money };

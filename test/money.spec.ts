@@ -20,6 +20,7 @@ describe('Money', () => {
     expect(Money.dollar(5).equals(Money.dollar(6))).toBeFalsy();
     expect(Money.euro(5).equals(Money.euro(6))).toBeFalsy();
     expect(Money.euro(5).equals(Money.dollar(5))).toBeFalsy();
+    expect(new Money(5, 'USD').equals(Money.dollar(5))).toBeTruthy();
   });
 
   it('should support currency codes', () => {

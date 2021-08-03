@@ -1,14 +1,12 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable max-classes-per-file */
 class Money {
   constructor(protected readonly value: number, public readonly code: string) {}
 
-  static dollar(value: number): Dollar {
-    return new Dollar(value, 'USD');
+  static dollar(value: number): Money {
+    return new Money(value, 'USD');
   }
 
-  static euro(value: number): Euro {
-    return new Euro(value, 'EUR');
+  static euro(value: number): Money {
+    return new Money(value, 'EUR');
   }
 
   multiplyBy(factor: number): Money {
@@ -20,6 +18,4 @@ class Money {
   }
 }
 
-class Euro extends Money {}
-class Dollar extends Money {}
 export { Money };

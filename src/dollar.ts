@@ -1,5 +1,5 @@
 export class Dollar {
-  constructor(private value: number) {}
+  constructor(private readonly value: number) {}
 
   multiplyBy(factor: number): Dollar {
     return new Dollar(this.value * factor);

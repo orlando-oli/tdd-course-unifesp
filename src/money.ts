@@ -6,8 +6,7 @@ class Money {
   }
 
   equals(anotherCurrency: Money): boolean {
-    if (this.constructor !== anotherCurrency.constructor) return false;
-    return anotherCurrency.value === this.value;
+    return this.constructor === anotherCurrency.constructor && anotherCurrency.value === this.value;
   }
 }
 

@@ -1,3 +1,4 @@
+import { Bank } from '../src/bank';
 import { Money } from '../src/money';
 
 describe('Money', () => {
@@ -21,8 +22,22 @@ describe('Money', () => {
   });
 
   it('should add', () => {
-    const result = Money.dollar(5).add(Money.dollar(5));
+    const five = Money.dollar(5);
+    const exp = five.add(five);
 
-    expect(result.equals(Money.dollar(10))).toBeTruthy();
+    expect(Bank.fetch(exp, 'USD')).toBeTruthy();
+  });
+
+  it('should return an addition', () => {
+    const five = Money.dollar(5);
+    const exp = five.add(five);
+
+    expect(exp.addend).toEqual(Money.dollar(5));
+    expect(exp.augend).toEqual(Money.dollar(5));
+  });
+  it('should fetch itself', () => {
+    const five = Money.dollar(5);
+
+    expect(Bank.fetch(five, 'USD')).toEqual(Money.dollar(5));
   });
 });

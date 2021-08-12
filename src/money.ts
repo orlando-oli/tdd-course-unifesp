@@ -16,6 +16,10 @@ class Money {
   equals(anotherCurrency: Money): boolean {
     return this.code === anotherCurrency.code && anotherCurrency.value === this.value;
   }
+
+  add(term: Money): Money {
+    return new Money(this.value + term.value, this.code);
+  }
 }
 
 export { Money };

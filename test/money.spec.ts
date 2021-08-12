@@ -19,4 +19,10 @@ describe('Money', () => {
     expect(Money.dollar(1).code).toEqual('USD');
     expect(Money.euro(1).code).toEqual('EUR');
   });
+
+  it('should add', () => {
+    const result = Money.dollar(5).add(Money.dollar(5));
+
+    expect(result.equals(Money.dollar(10))).toBeTruthy();
+  });
 });

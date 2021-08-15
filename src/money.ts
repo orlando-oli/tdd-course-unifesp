@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { Addition } from './Addition';
+import { Addition } from './addition';
 
 class Money {
   constructor(protected readonly value: number, public readonly code: string) {}

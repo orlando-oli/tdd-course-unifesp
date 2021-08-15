@@ -35,6 +35,7 @@ describe('Money', () => {
     expect(exp.addend).toEqual(Money.dollar(5));
     expect(exp.augend).toEqual(Money.dollar(5));
   });
+
   it('should fetch itself', () => {
     const five = Money.dollar(5);
 

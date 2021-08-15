@@ -1,4 +1,4 @@
-import { Addition } from './Addition';
+import { Addition } from './addition';
 import { Expression } from './expression';
 import { Money } from './money';
 

@@ -2,6 +2,8 @@ import { Bank } from '../src/bank';
 import { Money } from '../src/money';
 
 describe('Money', () => {
+  const bank = new Bank();
+
   it('should properly multiply money', () => {
     const fiveDollars = Money.dollar(5);
     const fiveEuros = Money.euro(5);
@@ -25,7 +27,7 @@ describe('Money', () => {
     const five = Money.dollar(5);
     const exp = five.add(five);
 
-    expect(Bank.fetch(exp, 'USD')).toBeTruthy();
+    expect(bank.fetch(exp, 'USD')).toBeTruthy();
   });
 
   it('should return an addition', () => {
@@ -39,6 +41,16 @@ describe('Money', () => {
   it('should fetch itself', () => {
     const five = Money.dollar(5);
 
-    expect(Bank.fetch(five, 'USD')).toEqual(Money.dollar(5));
+    expect(bank.fetch(five, 'USD')).toEqual(Money.dollar(5));
+  });
+
+  it('should convert different currencies, according to their conversion rate', () => {
+    bank.setRate('EUR', 'USD', 2);
+
+    expect(bank.fetch(Money.euro(2), 'USD')).toEqual(Money.dollar(1));
+  });
+
+  it("should return 1 if it's not trying to convert", () => {
+    expect(bank.getRate('USD', 'USD')).toEqual(1);
   });
 });

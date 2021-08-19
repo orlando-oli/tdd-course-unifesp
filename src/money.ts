@@ -1,5 +1,6 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { Addition } from './addition';
+import { Bank } from './bank';
 
 class Money {
   constructor(protected readonly value: number, public readonly code: string) {}
@@ -28,8 +29,8 @@ class Money {
     return this.value;
   }
 
-  fetch(targetCurrency: string): Money {
-    return this;
+  fetch(bank: Bank, targetCurrency: string): Money {
+    return new Money(this.value / bank.getRate(this.code, targetCurrency), targetCurrency);
   }
 }
 

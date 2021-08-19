@@ -1,8 +1,9 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
+import { Bank } from './bank';
 import { Money } from './money';
 
 interface Expression {
-  fetch: (targetCurrency: string) => Money;
+  fetch: (source: Bank, targetCurrency: string) => Money;
 }
 
 export { Expression };

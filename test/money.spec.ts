@@ -1,3 +1,4 @@
+import { Addition } from '../src/addition';
 import { Bank } from '../src/bank';
 import { Money } from '../src/money';
 
@@ -62,5 +63,25 @@ describe('Money', () => {
 
     const result = bank.fetch(fiveUSD.add(tenEUR), 'USD');
     expect(result).toEqual(Money.dollar(10));
+  });
+
+  it('should add on Addition', () => {
+    const fiveUSD = Money.dollar(5);
+    const tenEUR = Money.euro(10);
+
+    bank.setRate('EUR', 'USD', 2);
+
+    const result = new Addition(fiveUSD, tenEUR).add(Money.dollar(5));
+    expect(bank.fetch(result, 'USD')).toEqual(Money.dollar(15));
+  });
+
+  it('should multiply on Addition', () => {
+    const fiveUSD = Money.dollar(5);
+    const tenEUR = Money.euro(10);
+
+    bank.setRate('EUR', 'USD', 2);
+
+    const result = new Addition(fiveUSD, tenEUR).multiplyBy(2);
+    expect(bank.fetch(result, 'USD')).toEqual(Money.dollar(20));
   });
 });

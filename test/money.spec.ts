@@ -53,4 +53,14 @@ describe('Money', () => {
   it("should return 1 if it's not trying to convert", () => {
     expect(bank.getRate('USD', 'USD')).toEqual(1);
   });
+
+  it('should fetch addition of two different currencies', () => {
+    const fiveUSD = Money.dollar(5);
+    const tenEUR = Money.euro(10);
+
+    bank.setRate('EUR', 'USD', 2);
+
+    const result = bank.fetch(fiveUSD.add(tenEUR), 'USD');
+    expect(result).toEqual(Money.dollar(10));
+  });
 });
